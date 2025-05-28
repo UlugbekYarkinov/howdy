@@ -1,0 +1,97 @@
+options {
+    STATIC = false;
+    TRACK_TOKENS = true;
+}
+
+PARSER_BEGIN(HowdyLangParser)
+package org.example;
+
+import java.io.*;
+import org.example.interpreter.Interpreter;
+
+public class HowdyLangParser {
+    public static void main(String[] args) throws Exception {
+        InputStream input = args.length == 0 ? System.in : new FileInputStream(args[0]);
+        HowdyLangParser parser = new HowdyLangParser(input);
+        SimpleNode root = parser.Script();
+        root.dump(">");
+
+        Interpreter interpreter = new Interpreter();
+        interpreter.execute(root);
+    }
+}
+PARSER_END(HowdyLangParser)
+
+// === Lexer ===
+SKIP: { " " | "\t" | "\n" | "\r" }
+
+TOKEN: {
+    <HOLLER: "HOLLER">
+|   <IF_YALL: "IF_YALL">
+|   <ELSE_YALL: "ELSE_YALL">
+|   <WHILE_YALL: "WHILE_YALL">
+|   <ASSIGN: "=">
+|   <EQ: "==">
+|   <SEMI: ";">
+|   <LPAR: "(">
+|   <RPAR: ")">
+|   <LBRA: "{">
+|   <RBRA: "}">
+|   <STRING_LITERAL: "\"" ( "\\\"" | "\\\\" | ~["\\", "\""] )* "\"" >
+|   <IDENTIFIER: ["a"-"z", "A"-"Z"](["a"-"z", "A"-"Z", "0"-"9", "_"])* >
+}
+
+// === Grammar ===
+
+SimpleNode Script() #Script : { }
+{
+    Statements() <EOF> { return jjtThis; }
+}
+
+void Statements() #Statements : { }
+{
+    ( Statement() )+
+}
+
+void Statement() #Statement : { }
+{
+    Assignment()
+  | Print()
+  | If()
+  | While()
+}
+
+// Assignment of either a string or another variable
+void Assignment() #Assignment : { }
+{
+    <IDENTIFIER> <ASSIGN> Value() <SEMI>
+}
+
+// Print one or more values
+void Print() #Print : { }
+{
+    <HOLLER> Value() (Value())* <SEMI>
+}
+
+void If() #If : { }
+{
+    <IF_YALL> <LPAR> Condition() <RPAR> <LBRA> Statements() <RBRA>
+    [ <ELSE_YALL> <LBRA> Statements() <RBRA> ]
+}
+
+void While() #While : { }
+{
+    <WHILE_YALL> <LPAR> Condition() <RPAR> <LBRA> Statements() <RBRA>
+}
+
+// Compare variable to string or another variable
+void Condition() #Condition : { }
+{
+    <IDENTIFIER> <EQ> Value()
+}
+
+// A reusable rule for value: either string literal or identifier
+void Value() #Value : { }
+{
+    <STRING_LITERAL> | <IDENTIFIER>
+}
