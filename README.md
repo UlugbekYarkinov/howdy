@@ -76,7 +76,7 @@ Replace `src/test/test0.hl` with your input file path:
    }
 
    WHILE_YALL (name == "Partner") {
-      HOLLER "Still ridin'...";
+      HOLLER "Still riding'...";
       name = "Cowboy";
    }
    ```
