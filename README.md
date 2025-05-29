@@ -64,6 +64,15 @@ Replace `src/test/test0.hl` with your input file path:
    java -jar target/howdy-1.0-SNAPSHOT.jar src/test/test0.hl
    ```
 
+#### If you want to run the code in Codespaces:
+To make sure you run it on the same Java version
+   ```bash
+   sudo apt update
+   sudo apt install openjdk-21-jdk
+   export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+   export PATH=$JAVA_HOME/bin:$PATH
+   ```
+
 ### 📁 Example Code (test0.hl)
 
    ```bash
