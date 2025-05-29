@@ -45,7 +45,7 @@ This project demonstrates how to:
 
 ### 🔧 Prerequisites
 
-- Java 11+
+- Java 21+
 - Maven
 
 ### 🛠️ Build Steps
