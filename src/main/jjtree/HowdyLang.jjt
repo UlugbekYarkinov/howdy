@@ -26,7 +26,7 @@ PARSER_END(HowdyLangParser)
 SKIP: { " " | "\t" | "\n" | "\r" }
 
 TOKEN: {
-    <HOLLER: "HOLLER">
+    <HOLLER: "HOLA">
 |   <IF_YALL: "IF_YALL">
 |   <ELSE_YALL: "ELSE_YALL">
 |   <WHILE_YALL: "WHILE_YALL">

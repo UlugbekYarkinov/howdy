@@ -1,12 +1,12 @@
 greeting = "Howdy";
 name = "Partner";
-HOLLER greeting " " name;
+HOLA greeting " " name;
 
 IF_YALL (greeting == "Howdy") {
-  HOLLER "Yeehaw!";
+  HOLA "Yeehaw!";
 }
 
 WHILE_YALL (name == "Partner") {
-  HOLLER "Still riding...";
+  HOLA "Still riding...";
   name = "Cowboy";
 }
