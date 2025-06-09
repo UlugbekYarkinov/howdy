@@ -77,6 +77,21 @@ public class Interpreter {
                 }
                 break;
             }
+            case "DoTimes": {
+                // Extract N from Value() node
+                Object value = evaluateValue((SimpleNode) node.jjtGetChild(0));
+                int times;
+                try {
+                    times = Integer.parseInt(value.toString());
+                } catch (NumberFormatException e) {
+                    throw new RuntimeException("DO_YALL needs a number as string, like \"3\"");
+                }
+
+                for (int i = 0; i < times; i++) {
+                    visit((SimpleNode) node.jjtGetChild(1)); // block or statement
+                }
+                break;
+            }
         }
         return null;
     }

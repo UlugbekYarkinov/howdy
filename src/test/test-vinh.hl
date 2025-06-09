@@ -33,3 +33,10 @@ HOLLER "Final status:";
 HOLLER "User: " user;
 HOLLER "Role: " role;
 HOLLER "Count: " count;
+
+DO_YALL ("5") TIMES HOLLER "This here's a rodeo!";
+
+DO_YALL ("2") TIMES {
+    HOLLER "This here's a rodeo 1!";
+    HOLLER "This here's a rodeo 2!";
+}
