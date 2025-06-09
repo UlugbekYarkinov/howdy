@@ -6,6 +6,12 @@ import java.util.*;
 
 public class Interpreter {
     private final Map<String, String> variables = new HashMap<>();
+    private final Stack<Set<String>> declaredVars = new Stack<>();
+
+    public Interpreter() {
+        // Initialize with global scope
+        declaredVars.push(new HashSet<>());
+    }
 
     public void execute(SimpleNode node) {
         visit(node);
@@ -24,6 +30,14 @@ public class Interpreter {
                 visit((SimpleNode) node.jjtGetChild(0));
                 break;
 
+            case "Block":
+                // Create new scope for tracking declarations
+                declaredVars.push(new HashSet<>());
+                visit((SimpleNode) node.jjtGetChild(0));
+                // Remove scope when done
+                declaredVars.pop();
+                break;
+
             case "Assignment": {
                 // IDENTIFIER token is the first token of this node
                 String varName = node.jjtGetFirstToken().image;
@@ -32,7 +46,9 @@ public class Interpreter {
                 SimpleNode valueNode = (SimpleNode) node.jjtGetChild(0);
                 Object valObj = evaluateValue(valueNode);
 
+                // Store in variables map and mark as declared in current scope
                 variables.put(varName, valObj.toString());
+                declaredVars.peek().add(varName);
                 break;
             }
 
@@ -73,7 +89,7 @@ public class Interpreter {
         SimpleNode rightNode = (SimpleNode) conditionNode.jjtGetChild(0);
         Object rightVal = evaluateValue(rightNode);
 
-        String leftVal = variables.getOrDefault(left, left);
+        String leftVal = getVariableValue(left);
         return leftVal.equals(rightVal.toString());
     }
 
@@ -87,7 +103,17 @@ public class Interpreter {
                     .replace("\\\\", "\\");
         } else {
             // Identifier: return variable value or name itself
-            return variables.getOrDefault(token, token);
+            return getVariableValue(token);
         }
+    }
+
+    private String getVariableValue(String varName) {
+        // Check if variable exists in any scope
+        for (int i = declaredVars.size() - 1; i >= 0; i--) {
+            if (declaredVars.get(i).contains(varName)) {
+                return variables.get(varName);
+            }
+        }
+        return "null"; // Return "null" if variable not found
     }
 }

@@ -2,20 +2,21 @@ greeting = "Howdy";
 name = "Partner";
 HOLLER greeting " " name;
 
-singleLine = "singleLine";
-
-IF_YALL (singleLine == "singleLine")
-  HOLLER "singleLine!";
-
 IF_YALL (greeting == "Howdy") {
   HOLLER "Yeehaw!";
 }
+
+x = "global";
+
+IF_YALL (x == "global") {
+    x = "modified";
+    y = "new";
+}
+
+HOLLER x;
+HOLLER y;
 
 WHILE_YALL (name == "Partner") {
   HOLLER "Still riding...";
   name = "Cowboy";
 }
-
-WHILE_YALL (singleLine == "singleLine") {
-  HOLLER "Still singleLine...";
-  singleLine = "nah";}

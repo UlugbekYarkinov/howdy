@@ -59,6 +59,13 @@ void Statement() #Statement : { }
   | Print()
   | If()
   | While()
+  | Block()
+}
+
+// Block with its own scope
+void Block() #Block : { }
+{
+    <LBRA> Statements() <RBRA>
 }
 
 // Assignment of either a string or another variable
@@ -77,12 +84,12 @@ void If() #If : { }
 {
     <IF_YALL> <LPAR> Condition() <RPAR> 
     (
-        <LBRA> Statements() <RBRA>
+        Block()
       | Statement()
     )
     [ <ELSE_YALL> 
         (
-            <LBRA> Statements() <RBRA>
+            Block()
           | Statement()
         )
     ]
@@ -92,7 +99,7 @@ void While() #While : { }
 {
     <WHILE_YALL> <LPAR> Condition() <RPAR> 
     (
-        <LBRA> Statements() <RBRA>
+        Block()
       | Statement()
     )
 }
