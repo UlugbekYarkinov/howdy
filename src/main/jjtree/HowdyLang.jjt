@@ -32,8 +32,8 @@ TOKEN: {
 |   <WHILE_YALL: "WHILE_YALL">
 |   <DO_YALL: "DO_YALL">
 |   <TIMES: "TIMES">
-|   <ASSIGN: "=">
-|   <EQ: "==">
+|   <ASSIGN: "=" | "<-" | "is" | "are" | "contains" | "contain">
+|   <EQ: "==" | "equals" | "equal">
 |   <SEMI: ";">
 |   <LPAR: "(">
 |   <RPAR: ")">
