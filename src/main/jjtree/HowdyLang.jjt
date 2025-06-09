@@ -75,13 +75,26 @@ void Print() #Print : { }
 
 void If() #If : { }
 {
-    <IF_YALL> <LPAR> Condition() <RPAR> <LBRA> Statements() <RBRA>
-    [ <ELSE_YALL> <LBRA> Statements() <RBRA> ]
+    <IF_YALL> <LPAR> Condition() <RPAR> 
+    (
+        <LBRA> Statements() <RBRA>
+      | Statement()
+    )
+    [ <ELSE_YALL> 
+        (
+            <LBRA> Statements() <RBRA>
+          | Statement()
+        )
+    ]
 }
 
 void While() #While : { }
 {
-    <WHILE_YALL> <LPAR> Condition() <RPAR> <LBRA> Statements() <RBRA>
+    <WHILE_YALL> <LPAR> Condition() <RPAR> 
+    (
+        <LBRA> Statements() <RBRA>
+      | Statement()
+    )
 }
 
 // Compare variable to string or another variable
