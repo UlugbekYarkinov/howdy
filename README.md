@@ -72,6 +72,8 @@ To make sure you run it on the same Java version
 ### 📁 Example Code (test0.hl)
 
    ```bash
+   MAKE_PROGRAMMING
+
    greeting = "Howdy";
    name = "Partner";
    HOLLER greeting name;
@@ -84,6 +86,8 @@ To make sure you run it on the same Java version
       HOLLER "Still riding'...";
       name = "Cowboy";
    }
+
+   GREAT_AGAIN
    ```
 
 ### 📚 Technologies Used
