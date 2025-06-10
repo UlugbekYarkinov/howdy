@@ -1,0 +1,43 @@
+user = "Bob";
+role = "user";
+count = "0";
+
+IF_YALL (user == "Bob") role = "moderator";
+
+IF_YALL (role == "moderator") {
+    HOLLER "Welcome moderator!";
+    HOLLER "User: " user;
+    HOLLER "Role: " role;
+} ELSE_YALL {
+    HOLLER "Welcome user!";
+    HOLLER "User: " user;
+    HOLLER "Your role is: " role;
+}
+
+WHILE_YALL (count == "0") count = "1";
+
+WHILE_YALL (count == "1") {
+    HOLLER "Current count: " count;
+    HOLLER "Processing...";
+    count = "2";
+}
+
+IF_YALL (role == "moderator") {
+    IF_YALL (user == "Bob") HOLLER "Bob is a moderator";
+    HOLLER "Moderator privileges active";
+} ELSE_YALL HOLLER "Regular user access";
+
+HOLLER tempVar;
+
+HOLLER "Final status:";
+HOLLER "User: " user;
+HOLLER "Role: " role;
+HOLLER "Count: " count;
+
+DO_YALL ("5") TIMES HOLLER "This here's a rodeo!";
+
+HOLLER count;
+DO_YALL (count) TIMES {
+    HOLLER "This here's a rodeo 1!";
+    HOLLER "This here's a rodeo 2!";
+}

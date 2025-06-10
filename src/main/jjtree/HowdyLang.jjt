@@ -30,8 +30,10 @@ TOKEN: {
 |   <IF_YALL: "IF_YALL">
 |   <ELSE_YALL: "ELSE_YALL">
 |   <WHILE_YALL: "WHILE_YALL">
-|   <ASSIGN: "=">
-|   <EQ: "==">
+|   <DO_YALL: "DO_YALL">
+|   <TIMES: "TIMES">
+|   <ASSIGN: "=" | "<-" | "is" | "are" | "contains" | "contain">
+|   <EQ: "==" | "equals" | "equal">
 |   <SEMI: ";">
 |   <LPAR: "(">
 |   <RPAR: ")">
@@ -59,6 +61,14 @@ void Statement() #Statement : { }
   | Print()
   | If()
   | While()
+  | Block()
+  | DoTimes()
+}
+
+// Block with its own scope
+void Block() #Block : { }
+{
+    <LBRA> Statements() <RBRA>
 }
 
 // Assignment of either a string or another variable
@@ -75,13 +85,35 @@ void Print() #Print : { }
 
 void If() #If : { }
 {
-    <IF_YALL> <LPAR> Condition() <RPAR> <LBRA> Statements() <RBRA>
-    [ <ELSE_YALL> <LBRA> Statements() <RBRA> ]
+    <IF_YALL> <LPAR> Condition() <RPAR> 
+    (
+        Block()
+      | Statement()
+    )
+    [ <ELSE_YALL> 
+        (
+            Block()
+          | Statement()
+        )
+    ]
 }
 
 void While() #While : { }
 {
-    <WHILE_YALL> <LPAR> Condition() <RPAR> <LBRA> Statements() <RBRA>
+    <WHILE_YALL> <LPAR> Condition() <RPAR> 
+    (
+        Block()
+      | Statement()
+    )
+}
+
+void DoTimes() #DoTimes : { }
+{
+    <DO_YALL> <LPAR> Value() <RPAR> <TIMES>
+    (
+        Block()
+        | Statement()
+    )
 }
 
 // Compare variable to string or another variable

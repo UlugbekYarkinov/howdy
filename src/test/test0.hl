@@ -4,9 +4,15 @@ HOLLER greeting " " name;
 
 IF_YALL (greeting == "Howdy") {
   HOLLER "Yeehaw!";
+  WHILE_YALL (name == "Partner") {
+    HOLLER "I am inside the IF...";
+    name = "Cowboy";
+  }
+} ELSE_YALL {
+  HOLLER "This is ELSE statement!";
 }
 
-WHILE_YALL (name == "Partner") {
+WHILE_YALL (name == "Cowboy") {
   HOLLER "Still riding...";
-  name = "Cowboy";
+  name = "Not";
 }
