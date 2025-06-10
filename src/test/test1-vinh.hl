@@ -1,3 +1,5 @@
+MAKE_PROGRAMMING
+
 user = "Bob";
 role = "user";
 count = "0";
@@ -41,3 +43,5 @@ DO_YALL (count) TIMES {
     HOLLER "This here's a rodeo 1!";
     HOLLER "This here's a rodeo 2!";
 }
+
+GREAT_AGAIN

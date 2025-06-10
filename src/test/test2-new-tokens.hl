@@ -1,3 +1,7 @@
+MAKE_PROGRAMMING
+
 name is "Ulugbek";
 surname contains "Yarkinov";
 HOLLER name " " surname;
+
+GREAT_AGAIN

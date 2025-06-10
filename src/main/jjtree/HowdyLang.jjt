@@ -39,6 +39,8 @@ TOKEN: {
 |   <RPAR: ")">
 |   <LBRA: "{">
 |   <RBRA: "}">
+|   <BEGIN: "MAKE_PROGRAMMING">
+|   <END: "GREAT_AGAIN">
 |   <STRING_LITERAL: "\"" ( "\\\"" | "\\\\" | ~["\\", "\""] )* "\"" >
 |   <IDENTIFIER: ["a"-"z", "A"-"Z"](["a"-"z", "A"-"Z", "0"-"9", "_"])* >
 }
@@ -47,7 +49,7 @@ TOKEN: {
 
 SimpleNode Script() #Script : { }
 {
-    Statements() <EOF> { return jjtThis; }
+    <BEGIN> Statements() <END> <EOF> { return jjtThis; }
 }
 
 void Statements() #Statements : { }
