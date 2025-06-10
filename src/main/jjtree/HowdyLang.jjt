@@ -30,8 +30,10 @@ TOKEN: {
 |   <IF_YALL: "IF_YALL">
 |   <ELSE_YALL: "ELSE_YALL">
 |   <WHILE_YALL: "WHILE_YALL">
-|   <ASSIGN: "=">
-|   <EQ: "==">
+|   <DO_YALL: "DO_YALL">
+|   <TIMES: "TIMES">
+|   <ASSIGN: "=" | "<-" | "is" | "are" | "contains" | "contain">
+|   <EQ: "==" | "equals" | "equal">
 |   <SEMI: ";">
 |   <LPAR: "(">
 |   <RPAR: ")">
@@ -60,6 +62,7 @@ void Statement() #Statement : { }
   | If()
   | While()
   | Block()
+  | DoTimes()
 }
 
 // Block with its own scope
@@ -101,6 +104,15 @@ void While() #While : { }
     (
         Block()
       | Statement()
+    )
+}
+
+void DoTimes() #DoTimes : { }
+{
+    <DO_YALL> <LPAR> Value() <RPAR> <TIMES>
+    (
+        Block()
+        | Statement()
     )
 }
 

@@ -1,0 +1,3 @@
+name is "Ulugbek";
+surname contains "Yarkinov";
+HOLLER name " " surname;
