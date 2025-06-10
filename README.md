@@ -22,14 +22,10 @@ This project demonstrates how to:
 - ✅ String equality condition
 - ✅ `if-then-else` statements
 - ✅ `while` loop
+- ✅ `do N times` loop
 - ✅ `HOLLER` (print) statement
 - ✅ AST interpreter in Java
 - ✅ Grammar defined using `.jjt` (JavaCC + JJTree)
-
-## 🔜 Planned Feature
-
-- 🔁 **JavaTranslator**: A component that walks the AST and outputs valid Java source code.
-    - This feature is under development and will enable HowdyLang code to be **translated into runnable Java programs** rather than interpreted directly.
 
 ## 🧩 Constraints
 
