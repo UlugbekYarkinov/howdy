@@ -8,12 +8,16 @@ Whether you're `HOLLER`in' or loopin' `WHILE_YALL`, we've got you covered.
 
 ## 📜 Program Structure
 
-Every HowdyLang program is a **script** made up of one or more **statements**, executed in order from top to bottom.
+Every HowdyLang program is a **script** made up of one or more **statements** enclosed in `MAKE_PROGRAMMING` and `GREAT_AGAIN`, executed in order from top to bottom.
 
 ```howdy
 // Example:
+MAKE_PROGRAMMING
+
 username = "Cowboy";
 HOLLER "Howdy, " username;
+
+GREAT_AGAIN
 ```
 
 ---
@@ -160,6 +164,8 @@ Values can be either:
 ## 🧪 Sample Program
 
 ```howdy
+MAKE_PROGRAMMING
+
 name = "Tex";
 count = "1";
 
@@ -175,6 +181,8 @@ WHILE_YALL (count == "1") {
 }
 
 HOLLER "All done!";
+
+GREAT_AGAIN
 ```
 
 ---
@@ -190,6 +198,8 @@ HOLLER "All done!";
 | `{}`                   | Block scope                      |
 | `==`, `equals`, `equal`| String comparison                |
 | `=`, `is`, `<-`        | Assignment operators             |
+| MAKE_PROGRAMMING       | Begin script section             |
+| GREAT_AGAIN            | End script section               |
 
 ---
 
