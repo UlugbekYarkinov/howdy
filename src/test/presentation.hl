@@ -1,0 +1,30 @@
+MAKE_PROGRAMMING
+
+name = "Billy Joe";
+role <- "drifter";
+bootsOn is "false";
+rounds contains "1";
+loopCount = "0";
+
+HOLLER "YEEHAW!";
+HOLLER "Howdy, " name "!";
+
+IF_YALL (role == "drifter") HOLLER "Ridin' solo. Grab yer hat.";
+ELSE_YALL HOLLER "Sheriff's back in town!";
+
+WHILE_YALL (bootsOn equals "false") {
+    HOLLER "Get them boots on!";
+    bootsOn = "true";
+
+    IF_YALL (role == "drifter") {
+        HOLLER "Walkin' into town without backup...";
+    }
+}
+
+HOLLER "Boots on? " bootsOn;
+
+DO_YALL (rounds) TIMES HOLLER "Wranglin' time!";
+
+HOLLER "All done, partner!";
+
+GREAT_AGAIN
