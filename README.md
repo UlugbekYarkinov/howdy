@@ -57,7 +57,7 @@ This project demonstrates how to:
 3. Run a HowdyLang Program 
 Replace `src/test/test0.hl` with your input file path:
    ```bash
-   java -jar target/howdy-1.0-SNAPSHOT.jar src/test/test0.hl
+   java -jar target/howdy-1.0-SNAPSHOT.jar src/test/presentation.hl
    ```
 
 #### If you want to run the code in Codespaces:
